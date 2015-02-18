@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 
 namespace DoubleSidebarMenu
 {
-    public sealed class HamburgerMenu : ContentControl
+    public sealed class SideMenu : ContentControl
     {
         #region ScrollViewerProperty
 
@@ -26,9 +26,9 @@ namespace DoubleSidebarMenu
 
         #endregion
 
-        public HamburgerMenu()
+        public SideMenu()
         {
-            this.DefaultStyleKey = typeof(HamburgerMenu);
+            this.DefaultStyleKey = typeof(SideMenu);
             this.Loaded += OnLoaded;
         }
 
@@ -53,7 +53,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register("Header", typeof(object), typeof(HamburgerMenu), new PropertyMetadata(null));
+            DependencyProperty.Register("Header", typeof(object), typeof(SideMenu), new PropertyMetadata(null));
         #endregion
 
         #region LeftContent
@@ -64,7 +64,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty LeftContentProperty =
-            DependencyProperty.Register("LeftContent", typeof(object), typeof(HamburgerMenu), new PropertyMetadata(null));
+            DependencyProperty.Register("LeftContent", typeof(object), typeof(SideMenu), new PropertyMetadata(null));
         #endregion
 
         #region RightContent
@@ -75,7 +75,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty RightContentProperty =
-            DependencyProperty.Register("RightContent", typeof(object), typeof(HamburgerMenu), new PropertyMetadata(null));
+            DependencyProperty.Register("RightContent", typeof(object), typeof(SideMenu), new PropertyMetadata(null));
         #endregion
 
         #region HeaderTemplate
@@ -86,7 +86,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty HeaderTemplateProperty =
-            DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(HamburgerMenu), new PropertyMetadata(null));
+            DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(SideMenu), new PropertyMetadata(null));
         #endregion
 
         #region Position
@@ -97,7 +97,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty PositionProperty =
-            DependencyProperty.Register("Position", typeof(SnapPointsAlignment), typeof(HamburgerMenu), new PropertyMetadata(SnapPointsAlignment.Near));
+            DependencyProperty.Register("Position", typeof(SnapPointsAlignment), typeof(SideMenu), new PropertyMetadata(SnapPointsAlignment.Near));
         #endregion
 
         #region Viewport
@@ -108,11 +108,11 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty ViewportProperty =
-            DependencyProperty.Register("Viewport", typeof(double), typeof(HamburgerMenu), new PropertyMetadata(300d));
+            DependencyProperty.Register("Viewport", typeof(double), typeof(SideMenu), new PropertyMetadata(300d));
         #endregion
     }
 
-    public class HamburgerPanel : Panel, IScrollSnapPointsInfo
+    public class SidePanel : Panel, IScrollSnapPointsInfo
     {
 
         #region Position
@@ -123,7 +123,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty PositionProperty =
-            DependencyProperty.Register("Position", typeof(SnapPointsAlignment), typeof(HamburgerPanel), new PropertyMetadata(SnapPointsAlignment.Near));
+            DependencyProperty.Register("Position", typeof(SnapPointsAlignment), typeof(SidePanel), new PropertyMetadata(SnapPointsAlignment.Near));
         #endregion
 
         #region Viewport
@@ -134,7 +134,7 @@ namespace DoubleSidebarMenu
         }
 
         public static readonly DependencyProperty ViewportProperty =
-            DependencyProperty.Register("Viewport", typeof(double), typeof(HamburgerPanel), new PropertyMetadata(300d));
+            DependencyProperty.Register("Viewport", typeof(double), typeof(SidePanel), new PropertyMetadata(300d));
         #endregion
 
         protected override Size MeasureOverride(Size availableSize)

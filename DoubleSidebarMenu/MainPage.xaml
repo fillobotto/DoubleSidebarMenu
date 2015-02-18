@@ -10,12 +10,12 @@
 
     <Grid>
         <Grid.Resources>
-            <Style TargetType="local:HamburgerMenu">
+            <Style TargetType="local:SideMenu">
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 <Setter Property="VerticalContentAlignment" Value="Stretch"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="local:HamburgerMenu">
+                        <ControlTemplate TargetType="local:SideMenu">
                             <ScrollViewer VerticalScrollBarVisibility="Disabled"
                                       VerticalScrollMode="Disabled"
                                       HorizontalScrollBarVisibility="Hidden"
@@ -23,11 +23,11 @@
                                       HorizontalSnapPointsType="MandatorySingle"
                                       HorizontalSnapPointsAlignment="Near"
                                       x:Name="ScrollViewer">
-                                <local:HamburgerPanel Viewport="{TemplateBinding Viewport}">
+                                <local:SidePanel Viewport="{TemplateBinding Viewport}">
                                     <ContentControl Content="{TemplateBinding LeftContent}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                                     <ContentPresenter/>
                                     <ContentControl Content="{TemplateBinding RightContent}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                </local:HamburgerPanel>
+                                </local:SidePanel>
                             </ScrollViewer>
                         </ControlTemplate>
                     </Setter.Value>
@@ -35,18 +35,18 @@
             </Style>
         </Grid.Resources>
 
-        <local:HamburgerMenu>
-            <local:HamburgerMenu.LeftContent>
+        <local:SideMenu>
+            <local:SideMenu.LeftContent>
                 <Grid Background="Bisque" />
-            </local:HamburgerMenu.LeftContent>
+            </local:SideMenu.LeftContent>
 
             <Grid Background="Aqua">
 
             </Grid>
 
-            <local:HamburgerMenu.RightContent>
+            <local:SideMenu.RightContent>
                 <Grid Background="Bisque" />
-            </local:HamburgerMenu.RightContent>
-        </local:HamburgerMenu>
+            </local:SideMenu.RightContent>
+        </local:SideMenu>
     </Grid>
 </Page>
