@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrollViewer", "ScrollViewer\ScrollViewer.csproj", "{0C4747A5-DBE9-42BA-9193-6EFC108E269A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoubleSidebarMenu", "DoubleSidebarMenu\DoubleSidebarMenu.csproj", "{0C4747A5-DBE9-42BA-9193-6EFC108E269A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 // Il modello di elemento per la pagina vuota è documentato all'indirizzo http://go.microsoft.com/fwlink/?LinkId=391641
 
-namespace App1
+namespace DoubleSidebarMenu
 {
     /// <summary>
     /// Pagina vuota che può essere utilizzata autonomamente oppure esplorata all'interno di un frame.
