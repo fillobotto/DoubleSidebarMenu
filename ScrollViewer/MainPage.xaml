@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="App1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="local:HamburgerMenu">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:HamburgerMenu">
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled"
+                                      VerticalScrollMode="Disabled"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      HorizontalScrollMode="Auto"
+                                      HorizontalSnapPointsType="MandatorySingle"
+                                      HorizontalSnapPointsAlignment="Near"
+                                      x:Name="ScrollViewer">
+                                <local:HamburgerPanel Viewport="{TemplateBinding Viewport}">
+                                    <ContentControl Content="{TemplateBinding LeftContent}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <ContentPresenter/>
+                                    <ContentControl Content="{TemplateBinding RightContent}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </local:HamburgerPanel>
+                            </ScrollViewer>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+        <local:HamburgerMenu>
+            <local:HamburgerMenu.LeftContent>
+                <Grid Background="Bisque" />
+            </local:HamburgerMenu.LeftContent>
+
+            <Grid Background="Aqua">
+
+            </Grid>
+
+            <local:HamburgerMenu.RightContent>
+                <Grid Background="Bisque" />
+            </local:HamburgerMenu.RightContent>
+        </local:HamburgerMenu>
+    </Grid>
+</Page>
