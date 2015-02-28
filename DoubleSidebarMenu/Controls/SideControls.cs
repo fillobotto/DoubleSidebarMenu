@@ -26,6 +26,23 @@ namespace DoubleSidebarMenu
 
         #endregion
 
+        public void toggleLeft()
+        {
+            if (ScrollViewer.HorizontalOffset == Viewport)
+            {
+                ScrollViewer.ChangeView(0.0d, null, null, true);
+            }
+            else if (ScrollViewer.HorizontalOffset == 0)
+            {
+                ScrollViewer.ChangeView(Viewport, null, null, true);
+            }
+        }
+
+        public void toggleRight()
+        {
+
+        }
+
         public SideMenu()
         {
             this.DefaultStyleKey = typeof(SideMenu);
@@ -170,17 +187,12 @@ namespace DoubleSidebarMenu
 
         public bool AreVerticalSnapPointsRegular
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public IReadOnlyList<float> GetIrregularSnapPoints(Orientation orientation, SnapPointsAlignment alignment)
         {
-            if (orientation == Orientation.Horizontal)
-            {
-                return new float[] { 0.0f, (float)Viewport, (float)(Viewport + Window.Current.Bounds.Width), (float)(Viewport * 2 + Window.Current.Bounds.Width) };
-            }
-
-            throw new NotImplementedException();
+            return new float[] { 0.0f, (float)Viewport, (float)(Viewport + Window.Current.Bounds.Width), (float)(Viewport * 2 + Window.Current.Bounds.Width) };
         }
 
         public float GetRegularSnapPoints(Orientation orientation, SnapPointsAlignment alignment, out float offset)

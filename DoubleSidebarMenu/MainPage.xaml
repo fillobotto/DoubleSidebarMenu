@@ -35,12 +35,12 @@
             </Style>
         </Grid.Resources>
 
-        <local:SideMenu>
+        <local:SideMenu x:Name="menu">
             <local:SideMenu.LeftContent>
                 <Grid Background="Bisque" />
             </local:SideMenu.LeftContent>
 
-            <Grid Background="Aqua">
+            <Grid Background="Aqua" Tapped="Grid_Tapped">
 
             </Grid>
 

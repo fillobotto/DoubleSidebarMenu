@@ -46,5 +46,10 @@ namespace DoubleSidebarMenu
             // questo evento viene gestito automaticamente.
         }
 
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            menu.toggleLeft();
+        }
+
     }
 }
