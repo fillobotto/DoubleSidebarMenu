@@ -16,48 +16,78 @@ namespace DoubleSidebarMenu
 
         private ScrollViewer ScrollViewer;
 
-        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
-        {
-            if (ScrollViewer.HorizontalOffset < Viewport)
-                ScrollViewer.HorizontalSnapPointsAlignment = SnapPointsAlignment.Near;
-            else if (ScrollViewer.HorizontalOffset > Viewport)
-                ScrollViewer.HorizontalSnapPointsAlignment = SnapPointsAlignment.Far;
-        }
-
         #endregion
 
         public void toggleLeft()
         {
-            if (ScrollViewer.HorizontalOffset == Viewport)
+            if (Math.Round(ScrollViewer.HorizontalOffset, 0) == Viewport)
             {
-                ScrollViewer.ChangeView(0.0d, null, null, true);
+                var Succes = ScrollViewer.ChangeView(0.0d, null, null);
+
             }
-            else if (ScrollViewer.HorizontalOffset == 0)
+            else if (Math.Round(ScrollViewer.HorizontalOffset, 0) == 0)
             {
-                ScrollViewer.ChangeView(Viewport, null, null, true);
+                var Succes = ScrollViewer.ChangeView(Viewport, null, null);
             }
+
+        }
+
+        public void toggleCenter()
+        {
+            ScrollViewer.ChangeView(Viewport, null, null);
         }
 
         public void toggleRight()
         {
+            if (Math.Round(ScrollViewer.HorizontalOffset, 0) == Viewport * 2)
+            {
+                var period = TimeSpan.FromMilliseconds(0);
+                Windows.System.Threading.ThreadPoolTimer.CreateTimer(async (source) =>
+                {
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        var Succes = ScrollViewer.ChangeView(Viewport, null, null);
+                    });
+                }, period);
+            }
+            else if (Math.Round(ScrollViewer.HorizontalOffset, 0) == Viewport)
+            {
+                var period = TimeSpan.FromMilliseconds(0);
+                Windows.System.Threading.ThreadPoolTimer.CreateTimer(async (source) =>
+                {
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        var Succes = ScrollViewer.ChangeView(Viewport * 2, null, null);
+                    });
+                }, period);
+                
+            }
 
         }
 
         public SideMenu()
         {
             this.DefaultStyleKey = typeof(SideMenu);
-            this.Loaded += OnLoaded;
+            //this.Loaded += OnLoaded;
         }
+
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            ScrollViewer.ChangeView(Viewport, null, null);
+            var period = TimeSpan.FromMilliseconds(0);
+            Windows.System.Threading.ThreadPoolTimer.CreateTimer(async (source) =>
+            {
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    var Succes = ScrollViewer.ChangeView(Viewport, null, null, true);
+                });
+            }, period);
         }
 
         protected override void OnApplyTemplate()
         {
             ScrollViewer = (ScrollViewer)GetTemplateChild("ScrollViewer");
-            ScrollViewer.ViewChanged += ScrollViewer_ViewChanged;
+            //ScrollViewer.ViewChanged += ScrollViewer_ViewChanged;
 
             base.OnApplyTemplate();
         }
@@ -192,7 +222,11 @@ namespace DoubleSidebarMenu
 
         public IReadOnlyList<float> GetIrregularSnapPoints(Orientation orientation, SnapPointsAlignment alignment)
         {
-            return new float[] { 0.0f, (float)Viewport, (float)(Viewport + Window.Current.Bounds.Width), (float)(Viewport * 2 + Window.Current.Bounds.Width) };
+
+            //return new float[] { 0.0f, (float)Viewport, (float)(Viewport + Window.Current.Bounds.Width), (float)(Viewport * 2 + Window.Current.Bounds.Width) };
+            return new float[] { 0.0f, (float)Viewport, (float)(Viewport * 2)};
+
+
         }
 
         public float GetRegularSnapPoints(Orientation orientation, SnapPointsAlignment alignment, out float offset)
